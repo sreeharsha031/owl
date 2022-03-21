@@ -1,0 +1,28 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        def binsearch(i,dic2):
+            for k in dic2.keys():
+                if i==k:
+                    return True
+            return False
+            
+        def inter(dic1,dic2):
+            l=[]
+            for i in dic1.keys():
+                if binsearch(i,dic2):
+                    l.append(i)
+            return l
+            
+        dic1={}
+        dic2={}
+        for i in nums1:
+            if i not in dic1:
+                dic1[i]=1
+            else:
+                dic1[i]+=1
+        for i in nums2:
+            if i not in dic2:
+                dic2[i]=1
+            else:
+                dic2[i]+=1
+        return inter(dic1,dic2)
